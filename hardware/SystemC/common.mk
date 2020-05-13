@@ -12,6 +12,7 @@ VPATH      = $(TARGETPATH)/src
 # Defaults sources, headers and objects (in the VPATH)
 SOURCES   = $(wildcard src/*.cpp)
 HEADERS   = $(wildcard src/*.h)
+DATAFILES = $(wildcard *.dat)
 OBJECTS   = $(SOURCES:.cpp=.o)
 
 # Compiler/linker and flags
@@ -38,5 +39,5 @@ run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	-rm -rf $(OBJECTS) $(TARGET)
+	-rm -rf $(OBJECTS) $(TARGET) $(DATAFILES)
 	
