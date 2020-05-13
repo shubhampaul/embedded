@@ -1,6 +1,9 @@
 # SystemC install path: Put the systemc BUILD dir here.
 # Here it assumes the director is in /home/<username>/systemc-2.3.3/BUILD 
-SYSTEMC_DIR   = /home/<username>/systemc-2.3.3/BUILD
+
+USERNAME = $(shell whoami)
+
+SYSTEMC_DIR   = /home/$(USERNAME)/systemc-2.3.3/BUILD
 
 # Add source directoy for make to look in and add the project includes
 INCS       += -I$(TARGETPATH)/src
@@ -26,13 +29,13 @@ LIBS       = -Wl,-Bstatic -lsystemc -Wl,-Bdynamic -lpthread
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-        $(LXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
+	$(LXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
 
 $(OBJECTS): %.o:%.cpp $(HEADERS)
-        $(CXX) -c $(CFLAGS) $< -o $@
+	$(CXX) -c $(CFLAGS) $< -o $@
 
 run: $(TARGET)
-        ./$(TARGET)
+	./$(TARGET)
 
 clean:
 	-rm -rf $(OBJECTS) $(TARGET)
