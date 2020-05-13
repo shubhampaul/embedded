@@ -26,14 +26,14 @@ LIBS       = -Wl,-Bstatic -lsystemc -Wl,-Bdynamic -lpthread
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(LXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
+        $(LXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
 
 $(OBJECTS): %.o:%.cpp $(HEADERS)
-	$(CXX) -c $(CFLAGS) $< -o $@
+        $(CXX) -c $(CFLAGS) $< -o $@
 
 run: $(TARGET)
-	./$(TARGET)
-	
+        ./$(TARGET)
+
 clean:
 	-rm -rf $(OBJECTS) $(TARGET)
 	

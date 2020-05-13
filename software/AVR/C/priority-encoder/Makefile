@@ -5,11 +5,14 @@
 DEVICE     = atmega328p
 CLOCK      = 16000000UL
 BAUD       = 115200
-PORT       = /dev/ttyACM1
+PORT       = /dev/ttyACM0
 UFLAGS     = -V -c arduino
 
-HEX        = priority-encoder.hex
+TARGET     = priority-encoder
+
 TARGETPATH = $(shell pwd)
+HEX        = $(TARGET).hex
+ELF        = $(TARGET).elf
 
 # Add source directoy for make to look in and add the project includes
 INCS      += -I$(TARGETPATH)/src
@@ -19,7 +22,6 @@ VPATH      = $(TARGETPATH)/src
 SOURCES    = $(wildcard src/*.c)
 HEADERS    = $(wildcard src/*.h)
 OBJECTS    = $(SOURCES:.c=.o)
-ELF        = $(OBJECTS:.o=.elf)
 
 # Compiler/linker and flags
 COMPILER   =  avr-gcc
@@ -48,9 +50,9 @@ $(HEX): $(ELF)
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
 
 $(ELF): $(OBJECTS)
-	$(LINKER) $(LFLAGS) $< -o $@
+	$(LINKER) $(LFLAGS) $(OBJECTS) -o $@
 
-$(OBJECTS): $(SOURCES) $(HEADERS)
+$(OBJECTS): %.o:%.c $(HEADERS)
 	$(COMPILER) -c $(CFLAGS) $< -o $@
 
 flash: $(HEX)
