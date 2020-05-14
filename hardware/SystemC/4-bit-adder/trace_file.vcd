@@ -1,5 +1,5 @@
 $date
-     May 14, 2020       11:42:08
+     May 14, 2020       15:05:23
 $end
 
 $version
@@ -11,9 +11,20 @@ $timescale
 $end
 
 $scope module SystemC $end
-$var wire   32  aaaaa  fake [31:0]  $end
-$var wire    1  aaaab  inp_cin       $end
-$var wire    1  aaaac  co       $end
+$var wire    1  aaaaa  inp_a(0)       $end
+$var wire    1  aaaab  inp_b(0)       $end
+$var wire    1  aaaac  sum(0)       $end
+$var wire    1  aaaad  inp_a(1)       $end
+$var wire    1  aaaae  inp_b(1)       $end
+$var wire    1  aaaaf  sum(1)       $end
+$var wire    1  aaaag  inp_a(2)       $end
+$var wire    1  aaaah  inp_b(2)       $end
+$var wire    1  aaaai  sum(2)       $end
+$var wire    1  aaaaj  inp_a(3)       $end
+$var wire    1  aaaak  inp_b(3)       $end
+$var wire    1  aaaal  sum(3)       $end
+$var wire    1  aaaam  inp_cin       $end
+$var wire    1  aaaan  co       $end
 $upscope $end
 $enddefinitions  $end
 
@@ -22,15 +33,65 @@ All initial values are dumped below at time 0 sec = 0 timescale units.
 $end
 
 $dumpvars
-b0 aaaaa
+0aaaaa
 0aaaab
 0aaaac
+0aaaad
+0aaaae
+0aaaaf
+0aaaag
+0aaaah
+0aaaai
+0aaaaj
+0aaaak
+0aaaal
+0aaaam
+0aaaan
 $end
 
+#10000
+1aaaag
+1aaaah
+1aaaal
+
+#20000
+1aaaaa
+1aaaab
+1aaaaf
+0aaaag
+0aaaah
+0aaaal
+
+#30000
+0aaaaa
+0aaaab
+1aaaad
+1aaaae
+0aaaaf
+1aaaai
+
+#40000
+0aaaad
+0aaaae
+1aaaag
+1aaaah
+0aaaai
+1aaaal
+
 #50000
-1aaaac
+0aaaag
+0aaaah
+1aaaaj
+1aaaak
+0aaaal
+1aaaan
 
 #60000
-0aaaac
+1aaaaa
+1aaaab
+1aaaaf
+0aaaaj
+0aaaak
+0aaaan
 
 #70000
